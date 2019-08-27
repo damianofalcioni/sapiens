@@ -1,9 +1,8 @@
 package sapiens.samples;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 
 import sapiens.core.Network;
 
@@ -57,7 +56,7 @@ public class LogicalGateTest {
   private void assertResult(Network gate, double[] inputs, double expected) {
     var result = gate.process(inputs);
 
-    assertThat(result.length, is(1));
-    assertThat(result[0], is(expected));
+    assertEquals(1, result.length);
+    assertEquals(expected, result[0]);
   }
 }
