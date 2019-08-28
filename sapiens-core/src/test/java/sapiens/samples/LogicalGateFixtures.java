@@ -24,6 +24,12 @@ public class LogicalGateFixtures {
     return new Network(new Layer[] { layer });
   }
 
+  public static Network nandGate() {
+    var neuron = new Neuron(new double[] { -1d, -1d }, -1.5d);
+    var layer = new Layer(new Neuron[] { neuron });
+    return new Network(new Layer[] { layer });
+  }
+
   public static Network xorGate() {
     var neuron1 = new Neuron(new double[] { 1d, 1d }, 1d);
     var neuron2 = new Neuron(new double[] { -1d, -1d }, -1d);

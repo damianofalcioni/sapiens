@@ -44,6 +44,16 @@ public class LogicalGateTest {
   }
 
   @Test
+  public void testNandGate() {
+    var nand = LogicalGateFixtures.nandGate();
+
+    assertResult(nand, zeroZero, 1d);
+    assertResult(nand, zeroOne, 1d);
+    assertResult(nand, oneZero, 1d);
+    assertResult(nand, oneOne, 0d);
+  }
+
+  @Test
   public void testXorGate() {
     var xor = LogicalGateFixtures.xorGate();
 
