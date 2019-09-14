@@ -1,14 +1,25 @@
 package sapiens.core;
 
+import sapiens.core.activation.ActivationFunction;
+import sapiens.core.activation.UnitStep;
+
 public class Neuron {
 
   private final double[] weights;
 
-  private final double threshold;
+  private final double bias;
 
-  public Neuron(double[] weigths, double threshold) {
+  private final ActivationFunction activationFunction;
+
+  public Neuron(double[] weigths, double bias) {
+    this(weigths, bias, new UnitStep());
+  }
+
+  public Neuron(double[] weigths, double bias,
+      ActivationFunction activationFunction) {
     this.weights = weigths;
-    this.threshold = threshold;
+    this.bias = bias;
+    this.activationFunction = activationFunction;
   }
 
   public double process(double[] inputs) {
@@ -17,7 +28,8 @@ public class Neuron {
     for (var i = 0; i < weights.length; i++) {
       netValue += weights[i] * inputs[i];
     }
+    netValue += bias;
 
-    return netValue >= threshold ? 1d : 0d;
+    return activationFunction.activate(netValue);
   }
 }
